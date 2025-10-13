@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input[type="text"] {
+            width: 200px;
+            padding: 5px;
+        }
+        input[type="submit"] {
+            padding: 5px 10px;
+            margin-left: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<h2>Simple Calculator</h2>
+<form action="/calculate" method="get">
+    <input type="text" name="expr" placeholder="Enter expression">
+    <input type="submit" value="Calculate">
+</form>
+
+<div class="result" th:if="${result}">
+    <p th:text="'Result: ' + ${expr} + ' = ' + ${result}"></p>
+</div>
+
+<div class="result" th:if="${error}">
+    <p th:text="${error}"></p>
+</div>
+</body>
+</html>
